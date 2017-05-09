@@ -29,38 +29,33 @@
 
         </activity>
         <activity android:name="com.example.choi.tour.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name="com.example.choi.tour.UserInfoActivity">
 
         </activity>
 
         <activity android:name="com.example.choi.tour.TravelExpensesActivity"></activity>
-        <activity android:name="com.example.choi.tour.MoneyUsageActivity">
 
-        </activity>
         <activity android:name="com.example.choi.tour.PastTravelPlaceActivity">
 
         </activity>
         <activity android:name="com.example.choi.tour.TravelRouteActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name="com.example.choi.tour.OthersTravelPlaceListActivity">
 
         </activity>
         <activity android:name="com.example.choi.tour.BookTravelActivity"></activity>
-        <activity android:name="com.example.choi.tour.InputConsumeMoneyActivity">
 
-        </activity>
-        <activity android:name="com.example.choi.tour.InputGoalMoneyActivity"></activity>
+
 
         <activity android:name="com.example.choi.tour.LoginActivity"></activity>
-        <activity android:name="com.example.choi.tour.SuccessActivity"></activity>
+
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
