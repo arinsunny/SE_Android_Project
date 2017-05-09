@@ -15,12 +15,13 @@ import android.widget.ImageButton;
 import com.kakao.auth.Session;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.kakao.usermgmt.response.model.UserProfile;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
-
+Intent intentUserinfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton travelExpenses = (ImageButton) findViewById(R.id.btn_travel_expense);
         ImageButton travelRoute = (ImageButton) findViewById(R.id.btn_travelRoute);
         Button logOutButton = (Button) findViewById(R.id.btn_login);
-
+        intentUserinfo = getIntent();
 
         //hash key 값 가져오기
         try {
@@ -60,11 +61,26 @@ public class MainActivity extends AppCompatActivity {
             userInfoButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
+
+                    intentUserinfo.getSerializableExtra("userProfile");
+                    Bundle bundle = intentUserinfo.getExtras();
+                    final UserProfile userProfile = bundle.getParcelable("userProfile");
                     Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
+                    intent.putExtra("userProfile", userProfile);
+
                     startActivity(intent);
+
                 }
             });
         } else {
+            //로그인이 되지 않았을때에
+            userInfoButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
 
             logOutButton.setOnClickListener(new View.OnClickListener(){
                 @Override
