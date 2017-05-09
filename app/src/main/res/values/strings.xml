@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Tour Recommend</string>
+    <string name="loading">loading</string>
+    <string name="signed_out">signed_out</string>
+    <string name="signed_in_fmt">LoginTest</string>
+
 </resources>

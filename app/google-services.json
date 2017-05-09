@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "522832883356",
+    "project_id": "tour-2371e"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:522832883356:android:028a76345dda97af",
+        "android_client_info": {
+          "package_name": "com.example.choi.tour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "522832883356-vqung33sqa5pp90klihud9bi5804hslp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.choi.tour",
+            "certificate_hash": "d5c24e7d8eb1881952dbd6b3740182389af6932b"
+          }
+        },
+        {
+          "client_id": "522832883356-34i75fv03ju0selrene30qansv9u6enh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWZZ9Q-JX1-9ZH3U3Cqum_I7WxdWBkFFY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
