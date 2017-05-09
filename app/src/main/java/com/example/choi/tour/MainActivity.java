@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ImageButton userInfoButton = (ImageButton) findViewById(R.id.btn_userinfo);
+        ImageButton travelExpenses = (ImageButton) findViewById(R.id.btn_travel_expense);
+        ImageButton travelRoute = (ImageButton) findViewById(R.id.btn_travelRoute);
+        Button logOutButton = (Button) findViewById(R.id.btn_login);
 
 
         //hash key 값 가져오기
@@ -43,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (Session.getCurrentSession().isOpened()) {
             // 로그인이 되었을때에
-            Button btn = (Button) findViewById(R.id.btn_login);
-            btn.setText("LOGOUT");
+            logOutButton.setText("LOGOUT");
             findViewById(R.id.btn_login).setOnClickListener(
                     new Button.OnClickListener(){
 
@@ -54,8 +57,15 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
             );
+            userInfoButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
+                    startActivity(intent);
+                }
+            });
         } else {
-            Button logOutButton = (Button) findViewById(R.id.btn_login);
+
             logOutButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -66,21 +76,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
-        //button function 부분
-
-
-        ImageButton userInfoButton = (ImageButton) findViewById(R.id.btn_userinfo);
-        userInfoButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-        ImageButton travelExpenses = (ImageButton) findViewById(R.id.btn_travel_expense);
         travelExpenses.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -88,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton travelRoute = (ImageButton) findViewById(R.id.btn_travelRoute);
+
         travelRoute.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
