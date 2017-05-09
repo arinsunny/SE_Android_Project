@@ -82,4 +82,10 @@
     <receiver android:name=".NotificationReceiver"/>
 
 
+    <service android:name="RESTFulApiService"></service>
+
+
+
+
+
 </manifest>
