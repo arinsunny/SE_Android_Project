@@ -30,15 +30,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".GoogleLoginActivity">
-
-
         </activity>
-        <activity android:name="com.example.choi.tour.MainActivity">
+
+        <activity android:name=".NotificationPush">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name="com.example.choi.tour.MainActivity">
+
         </activity>
         <activity android:name="com.example.choi.tour.UserInfoActivity">
 
