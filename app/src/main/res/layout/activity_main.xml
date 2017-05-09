@@ -23,55 +23,44 @@
 
     <ImageButton
         android:id="@+id/btn_userinfo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
 
         android:layout_alignTop="@+id/btn_travel_expense"
-        android:layout_marginEnd="144dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        app:srcCompat="@drawable/user_img"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_travelRoute"
-        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="0.136"
+        app:srcCompat="@drawable/user_img"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginRight="144dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.875" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageButton
         android:id="@+id/btn_travel_expense"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="144dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/btn_userinfo"
         app:srcCompat="@drawable/plane_img"
-        android:layout_marginRight="132dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.878" />
+        android:layout_marginRight="144dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageButton
         android:id="@+id/btn_travelRoute"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_alignEnd="@+id/btn_travel_expense"
         android:layout_alignRight="@+id/btn_travel_expense"
         android:layout_below="@+id/btn_login"
         android:layout_marginEnd="144dp"
-        android:layout_marginTop="42dp"
-        app:layout_constraintTop_toBottomOf="@+id/btn_travel_expense"
         app:srcCompat="@drawable/route_img"
-        android:layout_marginRight="144dp"
+        android:layout_marginRight="132dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.875" />
+        android:layout_marginTop="23dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_travel_expense" />
 
 </android.support.constraint.ConstraintLayout>
