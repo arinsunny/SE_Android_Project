@@ -10,7 +10,7 @@
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btn_userinfo"
+        android:layout_alignTop="@+id/btn_user_info"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -22,14 +22,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/btn_userinfo"
+        android:id="@+id/btn_user_info"
         android:layout_width="120dp"
         android:layout_height="120dp"
 
         android:layout_alignTop="@+id/btn_travel_expense"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.136"
+        app:layout_constraintVertical_bias="0.106"
         app:srcCompat="@drawable/user_img"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginRight="144dp"
@@ -43,14 +43,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/btn_userinfo"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_user_info"
         app:srcCompat="@drawable/plane_img"
         android:layout_marginRight="144dp"
         app:layout_constraintRight_toRightOf="parent" />
 
     <ImageButton
-        android:id="@+id/btn_travelRoute"
+        android:id="@+id/btn_travel_route"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_alignEnd="@+id/btn_travel_expense"
@@ -58,9 +58,55 @@
         android:layout_below="@+id/btn_login"
         android:layout_marginEnd="144dp"
         app:srcCompat="@drawable/route_img"
-        android:layout_marginRight="132dp"
+        android:layout_marginRight="144dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="29dp"
         app:layout_constraintTop_toBottomOf="@+id/btn_travel_expense" />
+
+    <TextView
+        android:id="@+id/text_user_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="User Infomation"
+        app:layout_constraintBottom_toTopOf="@+id/btn_travel_expense"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_user_info"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/text_travel_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Estimated Travel Amount"
+        app:layout_constraintBottom_toTopOf="@+id/btn_travel_route"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_travel_expense"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/text_travel_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Tour Route"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_travel_route"
+        app:layout_constraintVertical_bias="0.111" />
 
 </android.support.constraint.ConstraintLayout>

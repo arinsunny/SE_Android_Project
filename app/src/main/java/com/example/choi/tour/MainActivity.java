@@ -26,9 +26,9 @@ Intent intentUserinfo;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageButton userInfoButton = (ImageButton) findViewById(R.id.btn_userinfo);
+        ImageButton userInfoButton = (ImageButton) findViewById(R.id.btn_user_info);
         ImageButton travelExpenses = (ImageButton) findViewById(R.id.btn_travel_expense);
-        ImageButton travelRoute = (ImageButton) findViewById(R.id.btn_travelRoute);
+        ImageButton travelRoute = (ImageButton) findViewById(R.id.btn_travel_route);
         Button logOutButton = (Button) findViewById(R.id.btn_login);
         intentUserinfo = getIntent();
 

@@ -112,9 +112,8 @@ public class UserInfoActivity extends AppCompatActivity{
         deleteUserButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                //버튼 클릭시 KaKao 계정과 연동 중지
                 onClickUnlink();
-                //UserInfo userinfo = new UserInfo();
-                //userinfo.deleteUserInfo();
             }
         });
     }
