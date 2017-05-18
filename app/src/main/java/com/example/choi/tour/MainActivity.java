@@ -266,7 +266,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 }
             });
 
-
         }else if(GoogleLoginFlag == 1 && KaKaoLoginFlag == 1){
             //둘다 로그인이 되어있는 상태 둘중 하나를 꺼야함
         }
