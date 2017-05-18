@@ -4,11 +4,22 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.OptionalPendingResult;
+import com.google.android.gms.common.api.ResultCallback;
 import com.kakao.auth.ErrorCode;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -23,13 +34,28 @@ import com.kakao.util.helper.log.Logger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener{
     SessionCallback callback;
+    private GoogleApiClient mGoogleApiClient;
+    private static final int RC_SIGN_IN = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // 구글 로그인 부분
+        findViewById(R.id.g_sign_in_button).setOnClickListener(this);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        //카카오 인증
         try {
             PackageInfo info = getPackageManager().getPackageInfo(this.getPackageName(), PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
@@ -52,9 +78,66 @@ public class LoginActivity extends AppCompatActivity {
 
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
-
-
     }
+
+    // Google login 부분 설정하기
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
+        if (opr.isDone()) {
+            // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
+            // and the GoogleSignInResult will be available instantly.
+            Log.d("opr.isDone", "Got cached sign-in");
+
+            GoogleSignInResult result = opr.get();
+            handleSignInResult(result);
+        } else {
+            // If the user has not previously signed in on this device or the sign-in has expired,
+            // this asynchronous branch will attempt to sign in the user silently.  Cross-device
+            // single sign-on will occur in this branch.
+            //showProgressDialog();
+            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+                @Override
+                public void onResult(GoogleSignInResult googleSignInResult) {
+                    //hideProgressDialog();
+                    handleSignInResult(googleSignInResult);
+                }
+            });
+        }
+    }
+
+    private void handleSignInResult(GoogleSignInResult result) {
+        Log.d("handleSignInResult", "handleSignInResult:" + result.isSuccess());
+        if (result.isSuccess()) {
+            // Signed in successfully, show authenticated UI.
+            GoogleSignInAccount acct = result.getSignInAccount();
+            String personName = acct.getDisplayName();
+            String personGivenName = acct.getGivenName();
+            String personFamilyName = acct.getFamilyName();
+            String personEmail = acct.getEmail();
+            String personId = acct.getId();
+            Uri personPhoto = acct.getPhotoUrl();
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
+
+
+        } else {
+            // Signed out, show unauthenticated UI.
+
+        }
+    }
+
+    private void signIn() {
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+
+    //카카오 인증 부분
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //간편로그인시 호출 ,없으면 간편로그인시 로그인 성공화면으로 넘어가지 않음
@@ -63,6 +146,28 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         super.onActivityResult(requestCode, resultCode, data);
+        //구글
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
+        }
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.g_sign_in_button:
+                signIn();
+                break;
+        }
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 
     private class SessionCallback implements ISessionCallback {
@@ -94,7 +199,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
 
-                
+
 
 
 

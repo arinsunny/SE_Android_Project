@@ -21,7 +21,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
-Intent intentUserinfo;
+    Intent intentUserinfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

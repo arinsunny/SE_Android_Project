@@ -17,6 +17,7 @@ public class RESTFulApiService extends Service {
         // 데이터를 전달할 필요가 없으면 return null;
         return null;
     }
+
     @Override
     public void onCreate() {
         super.onCreate();

@@ -30,17 +30,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".GoogleLoginActivity">
+
+
         </activity>
 
-        <activity android:name=".NotificationPush">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name="com.example.choi.tour.LoginActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+
+
+        </activity>
+
+
+        <activity android:name=".NotificationPush">
 
         </activity>
         <activity android:name="com.example.choi.tour.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
 
         </activity>
         <activity android:name="com.example.choi.tour.UserInfoActivity">
@@ -62,7 +72,6 @@
 
 
 
-        <activity android:name="com.example.choi.tour.LoginActivity"></activity>
 
 
         <meta-data android:name="com.google.android.gms.version"
