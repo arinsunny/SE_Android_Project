@@ -81,8 +81,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     // Google login 부분 설정하기
-
-
     private void handleSignInResult(GoogleSignInResult result) {
         Log.d("handleSignInResult", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
@@ -105,7 +103,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         }
     }
-
+    //구글 로그인 부분
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -119,7 +117,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
             return;
         }
-
         super.onActivityResult(requestCode, resultCode, data);
         //구글
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
@@ -128,7 +125,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             handleSignInResult(result);
         }
     }
-
 
     @Override
     public void onClick(View v) {
@@ -171,11 +167,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 @Override
                 public void onNotSignedUp() {
                 }
-
-
-
-
-
 
                 @Override
                 public void onSuccess(UserProfile userProfile) {
